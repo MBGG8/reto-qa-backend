@@ -13,7 +13,7 @@ Feature: Registrar Usuario
     Then status 201
     And match response == read('classpath:schemas/createUserResponseSchema.json')
 
-  @UnhappyPath @RegistrarUserEmailInvalido
+  @UnhappyPath @RegistrarUserEmailRegistrado
   Scenario: Registo con Correo ya Registrado
     Given path 'usuarios'
     And request createUser
