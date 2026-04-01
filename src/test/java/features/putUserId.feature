@@ -6,7 +6,7 @@ Feature: Editar Usuario
     * def createUser = call read('classpath:helpers/dataFactory.js')
     * def userUpdate = call read('classpath:helpers/dataFactory.js') 'edit'
 
-  @HappyPath
+  @HappyPath @ModificarUser
   Scenario: Modificacion de Datos de Usuario
     Given path 'usuarios'
     And request createUser
@@ -28,3 +28,30 @@ Feature: Editar Usuario
     And match response.nome == userUpdate.nome
     And match response.email == userUpdate.email
 
+  @UnHappyPath @ModificarCorreoYaRegistrado
+  Scenario: Modificacion de Datos con correo ya registrado
+    * def createUserA = call read('classpath:helpers/dataFactory.js')
+    * def createUserB = call read('classpath:helpers/dataFactory.js')
+
+    #USER A
+    Given path 'usuarios'
+    And request createUserA
+    When method post
+    Then status 201
+    * def emailOcupado = response.email
+
+    #USER B
+    Given path 'usuarios'
+    And request createUserB
+    When method post
+    Then status 201
+    * def userId = response._id
+
+    #EDIT USER B con correo de USER A
+    Given path 'usuarios', userId
+    * set createUserB.email = emailOcupado
+    And request createUserB
+    When method put
+
+    Then status 400
+    And match response == read('classpath:schemas/messageSchema.json')

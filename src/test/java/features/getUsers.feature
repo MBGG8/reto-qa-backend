@@ -4,7 +4,7 @@ Feature: Listar Usuarios
   Background:
     * url baseUrl
 
-  @HappyPath
+  @HappyPath @ListarUsuarios
   Scenario: Listar todos los usuarios
     Given path 'usuarios'
     When method get

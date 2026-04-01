@@ -1,3 +1,7 @@
 {
-  "message": "#string"
+  "nome": "##string",
+  "email": "##string",
+  "password": "##string",
+  "id": "##string",
+  "message": "##string"
 }
