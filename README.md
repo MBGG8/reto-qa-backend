@@ -1,6 +1,6 @@
 # 🚀 Reto de Automatización QA Backend - ServeRest API
 
-Suite de pruebas automatizadas para la API de Usuarios de ServeRest desarrollada con **Karate DSL**, cubriendo operaciones CRUD, validación de contratos JSON, happy paths y unhappy paths.
+Suite de pruebas automatizadas para la API de Usuarios de ServeRest(https://serverest.dev) desarrollada con **Karate DSL**, cubriendo operaciones CRUD, validación de contratos JSON, happy paths y unhappy paths.
 
 ---
 
